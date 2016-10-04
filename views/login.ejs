@@ -38,31 +38,7 @@
 }
   </style>
   <script>
-    $(document).ready(function() {
-      var email, pass;
-      $("#login").click(function() {
-alert("sss");
-        email = $("#Email").val();
-        pass = $("#password").val();
-        if (email == null && pass == null) {
-          $("login_status").html("Please enter the email and password");
-        } else {
-          $.post("http://localhost:3000/login", {
-            email: email,
-            password: pass
-          }, function(data) {
-            alert("sdsdsda"+data);
-            if (data === 'log in success') {
-              alert(data+"data");
 
-              window.location = "http://localhost:3000/users";
-            } else {
-              window.location = "http://localhost:3000/";
-            }
-          });
-        }
-      });
-    });
 
     //check if email is correct
     $(document).ready(function() {
@@ -70,7 +46,7 @@ alert("sss");
       $('#Email').blur(function() {
         $.ajax({
           type: "POST",
-          url: "http://localhost:3000/signup/check_email_exists",
+          url: "http://localhost:3000/check_email_exists",
           data: {
             email: $("#Email").val()
           },
