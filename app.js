@@ -9,7 +9,42 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+var sql = require('mssql');
 
+var dbConfig={
+  server:"localhost\\MSSQLSERVER",
+  database:"dataScience",
+  user:"sa",
+  password:"pencil",
+  port:1433
+};
+
+function getEmp() {
+  var conn= new sql.Connection(dbConfig);
+  var req=new sql.Request(conn);
+  conn.connect(function (err) {
+    if(err)
+    {
+      console.log(err);
+      return;
+    }
+    else{
+      req.query("SELECT * FROM Observations$ where line=23",function (err,data) {
+        if(err)
+        {
+          console.log(err);
+
+        }
+        else
+        {
+          console.log(data)
+        }
+        conn.close();
+      });
+    }
+  });
+}
+getEmp();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
