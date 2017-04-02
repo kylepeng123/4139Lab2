@@ -18,6 +18,17 @@ var dbConfig={
   password:"pencil",
   port:1433
 };
+var d = new Date(2017,0,01);
+console.log(d);
+var weekday = new Array(7);
+weekday[0] = "Sunday";
+weekday[1] = "Monday";
+weekday[2] = "Tuesday";
+weekday[3] = "Wednesday";
+weekday[4] = "Thursday";
+weekday[5] = "Friday";
+weekday[6] = "Saturday";
+
 
 function getEmp() {
   var conn= new sql.Connection(dbConfig);
@@ -29,7 +40,7 @@ function getEmp() {
       return;
     }
     else{
-      req.query("SELECT * FROM Observations$ where line=23",function (err,data) {
+      req.query("SELECT Date_PK FROM DateDim",function (err,data) {
         if(err)
         {
           console.log(err);
@@ -37,7 +48,12 @@ function getEmp() {
         }
         else
         {
-          console.log(data)
+         console.log(data[0])
+          var d = new Date(data[0].Date_PK);
+          var dayOfMonth =d.getDate()
+          var n = weekday[d.getDay()];
+          console.log(dayOfMonth);
+          console.log(n);
         }
         conn.close();
       });
