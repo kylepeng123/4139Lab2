@@ -1758,14 +1758,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 </div>
             </div>
             <!-- END PAGE HEADER-->
-            <div class="m-heading-1 border-green m-bordered">
-                <h3>Bootstrap Multiselect Dropdown</h3>
-                <p> Add the class <code>mt-multiselect</code> into each <code>select</code> element to initialize the
-                    dropdown.
-                    <br> For more info please check out
-                    <a href="http://davidstutz.github.io/bootstrap-multiselect/" target="_blank">the official
-                        documentation</a>. </p>
-            </div>
+
 
             <div class="row">
 
@@ -1774,7 +1767,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <div class="portlet-title">
                             <div class="caption font-red-sunglo">
                                 <i class="fa fa-gift font-red-sunglo"></i>
-                                <span class="caption-subject bold uppercase">Outline Square</span>
+                                <span class="caption-subject bold uppercase">Query 1</span>
                             </div>
                             <div class="tools">
 
@@ -1835,7 +1828,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <div class="portlet-title">
                             <div class="caption font-red-sunglo">
                                 <i class="fa fa-gift font-red-sunglo"></i>
-                                <span class="caption-subject bold uppercase">Query 2</span>
+                                <span class="caption-subject bold uppercase">Pleas select two country one product and one date(Query2)</span>
                             </div>
                             <div class="tools">
 
@@ -1926,7 +1919,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <div class="portlet-title">
                             <div class="caption font-red-sunglo">
                                 <i class="fa fa-gift font-red-sunglo"></i>
-                                <span class="caption-subject bold uppercase">Query 2</span>
+                                <span class="caption-subject bold uppercase">Please select a day(query 4)</span>
                             </div>
                             <div class="tools">
 
@@ -1964,7 +1957,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <div class="portlet-title">
                             <div class="caption font-red-sunglo">
                                 <i class="fa fa-gift font-red-sunglo"></i>
-                                <span class="caption-subject bold uppercase">Query 2</span>
+                                <span class="caption-subject bold uppercase">Please select a country, city, product(query 5)</span>
                             </div>
                             <div class="tools">
 
@@ -2042,7 +2035,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <div class="portlet-title">
                             <div class="caption font-red-sunglo">
                                 <i class="fa fa-gift font-red-sunglo"></i>
-                                <span class="caption-subject bold uppercase">Query 2</span>
+                                <span class="caption-subject bold uppercase">Please select a product (Query 6 )</span>
                             </div>
                             <div class="tools">
 
@@ -2067,6 +2060,44 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                             </div>
                                         </div>
+                                    </div>
+
+
+                                    <button class="=btn btn-primary block full-width m-b" type="submit">retrieve</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="row">
+
+                <div class='col-md-8 col-md-offset-2'>
+                    <div class="portlet light bordered">
+                        <div class="portlet-title">
+                            <div class="caption font-red-sunglo">
+                                <i class="fa fa-gift font-red-sunglo"></i>
+                                <span class="caption-subject bold uppercase">Query 7 Select complementary</span>
+                            </div>
+                            <div class="tools">
+
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            <form action="/createQuery7" class="form-horizontal form-bordered" method="post" role="form">
+                                <div class="form-body">
+                                    <div class="form-group">
+                                        <h4>Select All Option</h4>
+                                        <select class="mt-multiselect btn btn-default" id="productNameQ1" name="productNameQ1" multiple="multiple" data-label="left" data-select-all="true" data-width="100%" data-filter="true" data-action-onchange="true">
+                                            <% for(var i = 0;i < productName.length;i++){ %>
+                                            <% if (productName != null){ %>
+                                            <option value="<%= productName[i] %>"><%= productName[i] %></option>
+
+                                            <%}%>
+                                            <%}%>
+                                        </select>
                                     </div>
 
 

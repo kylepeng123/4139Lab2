@@ -68,6 +68,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
     <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
     <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+    <script src="https://www.amcharts.com/lib/3/serial.js"></script>
     <!-- Chart code -->
     <script>
         function htmlDecode(input) {
@@ -75,11 +76,201 @@ License: You must have a valid license purchased only from themeforest(the above
             e.innerHTML = input;
             return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
         }
+        var product_Name;
+        var country;
+        var price;
+        var i = 0;
+        var length = JSON.parse(htmlDecode("<%= JSON.stringify(city.length) %>"));
+        console.log(length)
 
+
+
+        price0 = JSON.parse(htmlDecode("<%= JSON.stringify(price0) %>"));
+        city = JSON.parse(htmlDecode("<%= JSON.stringify(city) %>"));
+        price1 = JSON.parse(htmlDecode("<%= JSON.stringify(price1) %>"));
+        priceP2 = JSON.parse(htmlDecode("<%= JSON.stringify(priceP2) %>"));
+        product = JSON.parse(htmlDecode("<%= JSON.stringify(product) %>"));
+        country = JSON.parse(htmlDecode("<%= JSON.stringify(country) %>"));
+        countryP2 = JSON.parse(htmlDecode("<%= JSON.stringify(countryP2) %>"));
+        country1 = JSON.parse(htmlDecode("<%= JSON.stringify(country1) %>"));
+        color = JSON.parse(htmlDecode("<%= JSON.stringify(colors) %>"));
+        var stringForall=[];
+        var j = 0;
+        console.log(country)
+        console.log(price0)
+        console.log(price0)
+        for (; j < country.length; j++) {
+
+            var obj1;
+
+                obj1 = { "country": country[j],"price0": parseFloat(price0[j]),"price1": parseFloat(priceP2[j]), "color": color[j]};
+                stringForall[j] = obj1;
+
+        }
+
+        var chart = AmCharts.makeChart("chartdiv", {
+            "theme": "light",
+            "type": "serial",
+            "startDuration": 2,
+            "dataProvider": stringForall,
+            "valueAxes": [{
+                "position": "left",
+                "title": "Visitors"
+            }],
+            "graphs": [{
+                "balloonText": "[[category]]: <b>[[value]]</b>",
+                "fillColorsField": "color",
+                "fillAlphas": 1,
+                "lineAlpha": 0.1,
+                "type": "column",
+                "valueField": "price0"
+            },{
+                "balloonText": "[[category]]: <b>[[value]]</b>",
+                "fillColorsField": "color",
+                "fillAlphas": 1,
+                "lineAlpha": 0.1,
+                "type": "column",
+                "valueField": "price1"
+            }],
+            "depth3D": 20,
+            "angle": 30,
+            "chartCursor": {
+                "categoryBalloonEnabled": false,
+                "cursorAlpha": 0,
+                "zoomable": false
+            },
+            "categoryField": "country",
+            "categoryAxis": {
+                "gridPosition": "start",
+                "labelRotation": 90
+            },
+            "export": {
+                "enabled": true
+            }
+
+        });
+
+        var string1 = [];
+        var string2 = [];
+        var string3 = [];
+        var string4 = [];
+        var string5 = [];
+        var string6 = [];
+        var string7 = [];
+        var string8 = [];
+        i = 0;
+
+        for (; i < length; i++) {
+            var myObj;
+            var bobj;
+                if(country1[i]=='Bangladesh')
+                {
+                    myObj = { "city": city[i],"price": parseFloat(price1[i])};
+                    string1[i] = myObj;
+                }
+                else if(country1[i]=='Brazil')
+                {
+                    bobj = { "city": city[i],"price": parseFloat(price1[i])};
+                    string2[i] = bobj;
+                }
+                else if(country1[i]=='India')
+                {
+                    myObj = { "city": city[i],"price":parseFloat(price1[i])};
+                    string3[i] = myObj;
+                }
+                else if(country1[i]=='Kenya')
+                {
+                    myObj = { "city": city[i],"price": parseFloat(price1[i])};
+                    string4[i] = myObj;
+                }
+                else if(country1[i]=='Indonesia')
+                {
+                    myObj = { "city": city[i],"price": parseFloat(price1[i])};
+                    string5[i] = myObj;
+                }
+                else if(country1[i]=='Nigeria')
+                {
+                    myObj = { "city": city[i],"price": parseFloat(price1[i])};
+                    string6[i] = myObj;
+                }
+                else if(country1[i]=='Pakistan')
+                {
+                    myObj = { "city": city[i],"price":parseFloat(price1[i])};
+                    string7[i] = myObj;
+                }
+                else
+                {
+                    myObj = { "city": city[i],"price":parseFloat(price1[i])};
+                    string8[i] = myObj;
+                }
+
+        }
+        var i=0;
+        var newString0=[];
+        for(;i<string1.length;i++)
+            if(string1[i]){
+                newString0.push(string1[i])
+                if(newString0.length>4)
+                    break
+            }
+        var newString1=[];
+        for(;i<string2.length;i++)
+            if(string2[i]){
+                newString1.push(string2[i])
+                if(newString1.length>4)
+                    break
+            }
+        var newString2=[];
+        for(;i<string3.length;i++)
+            if(string3[i]){
+                newString2.push(string3[i])
+                if(newString2.length>4)
+                    break
+            }
+        var newString3=[];
+        for(;i<string4.length;i++)
+            if(string4[i]){
+                newString3.push(string4[i])
+                if(newString3.length>4)
+                    break
+            }
+        var newString4=[];
+        for(;i<string5.length;i++)
+            if(string5[i]){
+                newString4.push(string5[i])
+                if(newString4.length>4)
+                    break
+            }
+        var newString5=[];
+        for(;i<string6.length;i++)
+            if(string6[i]){
+                newString5.push(string6[i])
+                if(newString5.length>4)
+                    break
+            }
+        var newString6=[];
+        for(;i<string7.length;i++)
+            if(string7[i]){
+                newString6.push(string7[i])
+                if(newString6.length>4)
+                    break
+            }
+        var newString7=[];
+        for(;i<string8.length;i++)
+            if(string8[i]){
+                newString7.push(string8[i])
+                if(newString7.length>4)
+                    break
+            }
+        console.log(newString1)
+        console.log(newString2)
+        console.log(newString3)
+        console.log(newString5)
+        console.log(newString6)
         /**
          * Create a map
          */
-        var map = AmCharts.makeChart("chartdiv", {
+        var map = AmCharts.makeChart("chart_5", {
             "type": "map",
             "theme": "light",
             "projection": "winkel3",
@@ -94,36 +285,25 @@ License: You must have a valid license purchased only from themeforest(the above
             "dataProvider": {
                 "map": "continentsLow",
                 "images": [{
-                    "title": "North America",
-                    "latitude": 39.563353,
-                    "longitude": -99.316406,
+                    "title": "Bangladesh",
+                    "latitude": 23.6850,
+                    "longitude": 90.3563,
                     "width": 150,
                     "height": 150,
                     "pie": {
                         "type": "pie",
                         "pullOutRadius": 0,
                         "labelRadius": 0,
-                        "dataProvider": [{
-                            "category": "Category #1",
-                            "value": 1200
-                        }, {
-                            "category": "Category #2",
-                            "value": 500
-                        }, {
-                            "category": "Category #3",
-                            "value": 765
-                        }, {
-                            "category": "Category #4",
-                            "value": 260
-                        }],
+                        "radius": "10%",
+                        "dataProvider": newString0,
                         "labelText": "[[value]]%",
-                        "valueField": "value",
-                        "titleField": "category"
+                        "valueField": "price",
+                        "titleField": "city"
                     }
                 }, {
-                    "title": "Europe",
-                    "latitude": 50.896104,
-                    "longitude": 19.160156,
+                    "title": "Brazil",
+                    "latitude": 14.2350,
+                    "longitude": 51.9253,
                     "width": 200,
                     "height": 200,
                     "pie": {
@@ -131,24 +311,15 @@ License: You must have a valid license purchased only from themeforest(the above
                         "pullOutRadius": 0,
                         "labelRadius": 0,
                         "radius": "10%",
-                        "dataProvider": [{
-                            "category": "Category #1",
-                            "value": 200
-                        }, {
-                            "category": "Category #2",
-                            "value": 600
-                        }, {
-                            "category": "Category #3",
-                            "value": 350
-                        }],
+                        "dataProvider": newString1,
                         "labelText": "",
-                        "valueField": "value",
-                        "titleField": "category"
+                        "valueField": "price",
+                        "titleField": "city"
                     }
                 }, {
-                    "title": "Asia",
-                    "latitude": 47.212106,
-                    "longitude": 103.183594,
+                    "title": "India",
+                    "latitude": 20.5937,
+                    "longitude": 78.9629,
                     "width": 200,
                     "height": 200,
                     "pie": {
@@ -156,27 +327,15 @@ License: You must have a valid license purchased only from themeforest(the above
                         "pullOutRadius": 0,
                         "labelRadius": 0,
                         "radius": "10%",
-                        "dataProvider": [{
-                            "category": "Category #1",
-                            "value": 352
-                        }, {
-                            "category": "Category #2",
-                            "value": 266
-                        }, {
-                            "category": "Category #3",
-                            "value": 512
-                        }, {
-                            "category": "Category #4",
-                            "value": 199
-                        }],
+                        "dataProvider": newString2,
                         "labelText": "",
-                        "valueField": "value",
-                        "titleField": "category"
+                        "valueField": "price",
+                        "titleField": "city"
                     }
                 }, {
-                    "title": "Africa",
-                    "latitude": 11.081385,
-                    "longitude": 21.621094,
+                    "title": "Kenya",
+                    "latitude":0.0236,
+                    "longitude":37.9062,
                     "width": 200,
                     "height": 200,
                     "pie": {
@@ -184,24 +343,77 @@ License: You must have a valid license purchased only from themeforest(the above
                         "pullOutRadius": 0,
                         "labelRadius": 0,
                         "radius": "10%",
-                        "dataProvider": [{
-                            "category": "Category #1",
-                            "value": 200
-                        }, {
-                            "category": "Category #2",
-                            "value": 300
-                        }, {
-                            "category": "Category #3",
-                            "value": 599
-                        }, {
-                            "category": "Category #4",
-                            "value": 512
-                        }],
+                        "dataProvider": newString3,
                         "labelText": "",
-                        "valueField": "value",
-                        "titleField": "category"
+                        "valueField": "price",
+                        "titleField": "city"
                     }
-                }]
+                },{
+                    "title": "Indonesia",
+                    "latitude": 0.7893,
+                    "longitude": 113.9213,
+                    "width": 200,
+                    "height": 200,
+                    "pie": {
+                        "type": "pie",
+                        "pullOutRadius": 0,
+                        "labelRadius": 0,
+                        "radius": "10%",
+                        "dataProvider": newString4,
+                        "labelText": "",
+                        "valueField": "price",
+                        "titleField": "city"
+                    }
+                },{
+                    "title": "Nigeria",
+                    "latitude": 9.0820,
+                    "longitude": 8.6753,
+                    "width": 200,
+                    "height": 200,
+                    "pie": {
+                        "type": "pie",
+                        "pullOutRadius": 0,
+                        "labelRadius": 0,
+                        "radius": "10%",
+                        "dataProvider": newString5,
+                        "labelText": "",
+                        "valueField": "price",
+                        "titleField": "city"
+                    }
+                },{
+                    "title": "Pakistan",
+                    "latitude": 30.3753,
+                    "longitude": 69.3451,
+                    "width": 200,
+                    "height": 200,
+                    "pie": {
+                        "type": "pie",
+                        "pullOutRadius": 0,
+                        "labelRadius": 0,
+                        "radius": "10%",
+                        "dataProvider": newString6,
+                        "labelText": "",
+                        "valueField": "price",
+                        "titleField": "city"
+                    }
+                },
+                    {
+                        "title": "Philippines",
+                        "latitude": 12.8797,
+                        "longitude":121.7740,
+                        "width": 200,
+                        "height": 200,
+                        "pie": {
+                            "type": "pie",
+                            "pullOutRadius": 0,
+                            "labelRadius": 0,
+                            "radius": "10%",
+                            "dataProvider": newString7,
+                            "labelText": "",
+                            "valueField": "price",
+                            "titleField": "city"
+                        }
+                    }]
             },
 
             /**
@@ -277,10 +489,6 @@ License: You must have a valid license purchased only from themeforest(the above
 
             return holder;
         }
-
-
-
-            //console.log(string3)
 
 
     </script>
@@ -1969,89 +2177,8 @@ License: You must have a valid license purchased only from themeforest(the above
                     </div>
                 </div>
             </div>
-            <!-- END PAGE HEADER-->
-            <div class="m-heading-1 border-green m-bordered">
-                <h3>Bootstrap Multiselect Dropdown</h3>
-                <p> Add the class <code>mt-multiselect</code> into each <code>select</code> element to initialize the
-                    dropdown.
-                    <br> For more info please check out
-                    <a href="http://davidstutz.github.io/bootstrap-multiselect/" target="_blank">the official
-                        documentation</a>. </p>
-            </div>
-            <div class="row">
 
-                <div class='col-md-8 col-md-offset-2'>
-                    <div class="portlet light bordered">
-                        <div class="portlet-title">
-                            <div class="caption font-red-sunglo">
-                                <i class="fa fa-gift font-red-sunglo"></i>
-                                <span class="caption-subject bold uppercase">Outline Square</span>
-                            </div>
-                            <div class="tools">
 
-                            </div>
-                        </div>
-                        <div class="portlet-body">
-                            <form action="/createQuery1" class="form-horizontal form-bordered" method="post" role="form">
-                                <div class="form-body">
-                                    <!--div class="form-group">
-                                        <h4>Country</h4>
-                                        <select class="mt-multiselect btn blue btn-outline" multiple="multiple"
-                                                data-width="100%" id="countryQ1" name="countryQ1">
-                                            <option value="Bangladesh">Bangladesh</option>
-                                            <option value="Brazil">Brazil</option>
-                                            <option value="India">India</option>
-                                            <option value="Kenya">Kenya</option>
-                                            <option value="Indonesia">Indonesia</option>
-                                            <option value="Nigeria">Nigeria</option>
-                                            <option value="Pakistan">Pakistan</option>
-                                            <option value="Philippines">Philippines</option>
-                                        </select>
-                                    </div-->
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Bootstrap Styles</label>
-                                        <div class="col-md-9">
-                                            <div class="margin-bottom-10">
-                                                <select class="bs-select form-control input-small" data-style="btn-primary"  id="countryQ1" name="countryQ1">
-                                                    <option value="Bangladesh">Bangladesh</option>
-                                                    <option value="Brazil">Brazil</option>
-                                                    <option value="India">India</option>
-                                                    <option value="Kenya">Kenya</option>
-                                                    <option value="Indonesia">Indonesia</option>
-                                                    <option value="Nigeria">Nigeria</option>
-                                                    <option value="Pakistan">Pakistan</option>
-                                                    <option value="Philippines">Philippines</option>
-                                                </select>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Start With Years</label>
-                                        <div class="col-md-3">
-                                            <div class="input-group input-medium date date-picker"
-                                                 data-date="12-02-2012" data-date-format="dd-mm-yyyy"
-                                                 data-date-viewmode="years">
-                                                <input type="text" class="form-control" readonly id="dateMonth" name="dateMonth">
-                                                <span class="input-group-btn">
-                                                            <button class="btn default" type="button">
-                                                                <i class="fa fa-calendar"></i>
-                                                            </button>
-                                                        </span>
-                                            </div>
-                                            <!-- /input-group -->
-                                            <span class="help-block"> Select date </span>
-                                        </div>
-                                    </div>
-                                    <button class="=btn btn-primary block full-width m-b" type="submit">retrieve</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
             <div class="row">
                 <div class="col-md-12">
                     <!-- BEGIN ROW -->
@@ -2126,32 +2253,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="portlet light portlet-fit ">
-                        <div class="portlet-title">
-                            <div class="caption">
-                                <i class=" icon-layers font-green"></i>
-                                <span class="caption-subject font-green bold uppercase">Donut Chart</span>
-                            </div>
-                            <div class="actions">
-                                <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
-                                    <i class="icon-cloud-upload"></i>
-                                </a>
-                                <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
-                                    <i class="icon-wrench"></i>
-                                </a>
-                                <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
-                                    <i class="icon-trash"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="portlet-body">
-                            <div id="chart_6" style="height:500px;"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
 
 
         </div>

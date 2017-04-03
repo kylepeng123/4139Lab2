@@ -778,10 +778,12 @@ router.post('/createQuery6', function(req, res, next) {
   //res.render('indexv2', { title: 'Express' });
 });
 
-router.get('/createQuery7', function(req, res, next) {
+router.post('/createQuery7', function(req, res, next) {
 
 
   var productQ1=req.body.productNameQ1
+  var product1=productQ1[0]
+  var product2=productQ1[1]
   var month = new Array();
   month[0] = "January";
   month[1] = "February";
@@ -813,7 +815,7 @@ router.get('/createQuery7', function(req, res, next) {
       console.log(err);
       return;
     }
-    else { req.query("select distinct [Location Name] as Location_Name,[Country] from [dataScience].[dbo].[LocationDim2] order by [Country]", function (err, data) {
+    else { req.query("SELECT distinct L.Country, Avg(F.AvgPrice) As Price From [dbo].[FactTable2] F JOIN [dbo].[ProductDim2] P ON P.Product_SK = F.Product_FSK JOIN [dbo].[LocationDim2] L ON L.Location_SK = F.Location_FSK WHERE P.[Product Name] = '"+productQ1[0]+"' GROUP BY L.Country ORDER BY L.Country;", function (err, data) {
       if (err) {
         console.log(err);
 
@@ -822,51 +824,71 @@ router.get('/createQuery7', function(req, res, next) {
 
         console.log("I am in data")
         var i=0;
-        var city=[];
+       // var city=[];
         var country=[];
         var price0=[];
         for(;i<data.length;i++)
         {
-          city[i]=data[i].Location_Name;
+          price0[i]=data[i].Price;
           country[i]=data[i].Country;
          
         }
         //console.log(price[10]);
-      req.query("SELECT distinct L.Country, L.[Location Name] as Location_name, D.Month, D.Date, Avg(F.AvgPrice) As Price From [dbo].[FactTable2] F JOIN [dbo].[ProductDim2] P ON P.Product_SK = F.Product_FSK JOIN [dbo].[LocationDim2] L ON L.Location_SK = F.Location_FSK JOIN [dbo].[DateDim] D ON F.Date_FSK = D.Date_SK WHERE P.[Product Name] = 'Apple' AND Country='Bangladesh' GROUP BY GROUPING SETS (L.Country, (L.Country, D.Month), (L.Country, D.Date), (L.[Location Name]), (L.[Location Name], D.Month), (L.[Location Name], D.Date));", function (err, allData) {
-        if (err) {
-          console.log(err);
+        req.query("SELECT distinct L.Country, Avg(F.AvgPrice) As Price From [dbo].[FactTable2] F JOIN [dbo].[ProductDim2] P ON P.Product_SK = F.Product_FSK JOIN [dbo].[LocationDim2] L ON L.Location_SK = F.Location_FSK WHERE P.[Product Name] = '"+productQ1[1]+"' GROUP BY L.Country ORDER BY L.Country;", function (err, data1) {
+          if (err) {
+            console.log(err);
 
-        }
-        else {
-
-          console.log("I am in data")
-          var i = 0;
-          var city = [];
-          var country = [];
-          var price0 = [];
-          for (; i < allData.length; i++) {
-            city[i] = allData[i].Location_name;
-            country[i] = allData[i].Country;
-            price0[i] = allData[i].Price;
           }
-          //console.log(price[10]);
+          else {
+
+            console.log("I am in data")
+            var i = 0;
+            // var city=[];
+            var countryP2 = [];
+            var priceP2 = [];
+            for (; i < data1.length; i++) {
+              priceP2[i] = data1[i].Price;
+              countryP2[i] = data1[i].Country;
+
+            }
+            //console.log(price[10]);
+            req.query("SELECT distinct L.[Location Name] As Location_Name,L.Country, Avg(F.AvgPrice) As Price From [dbo].[FactTable2] F JOIN [dbo].[ProductDim2] P ON P.Product_SK = F.Product_FSK JOIN [dbo].[LocationDim2] L ON L.Location_SK = F.Location_FSK WHERE P.[Product Name] = '" + productQ1[0] + "' GROUP BY L.[Location Name],L.Country;", function (err, allData) {
+              if (err) {
+                console.log(err);
+
+              }
+              else {
+
+                console.log("I am in data")
+                var i = 0;
+                var city = [];
+                var country1 = [];
+                var price1 = [];
+                for (; i < allData.length; i++) {
+                  city[i] = allData[i].Location_Name;
+                  country1[i] = allData[i].Country;
+                  price1[i] = allData[i].Price;
+                }
+                //console.log(price[10]);
 
 
-          res.render('query7Chart', {
+                res.render('query7Chart', {
+                  countryP2:countryP2,
+                  price0: price0,
+                  price1: price1,
+                  city: city,
+                  country: country,
+                  product: productQ1,
+                  country1: country1,
+                  priceP2:priceP2,
+                  colors: colors
+                });
 
-            price0: price0,
-            city: city,
-            country: country,
-            product: productQ1,
+              }
+            })
 
-
-            colors: colors
-          });
-
-        }
-      })
-
-
+          }
+        })
 
         }
       })
