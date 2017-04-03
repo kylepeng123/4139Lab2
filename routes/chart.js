@@ -11,9 +11,9 @@ var ChartsAmcharts = function() {
             "marginTop": 10,
             "marginBottom": 26,
 
-            "fontFamily": 'Open Sans',            
+            "fontFamily": 'Open Sans',
             "color":    '#888',
-            
+
             "dataProvider": [{
                 "year": 2009,
                 "income": 23.5,
@@ -326,13 +326,13 @@ var ChartsAmcharts = function() {
             "type": "serial",
             "theme": "light",
 
-            "fontFamily": 'Open Sans',            
+            "fontFamily": 'Open Sans',
             "color":    '#888888',
-            
+
             "pathToImages": App.getGlobalPluginsPath() + "amcharts/amcharts/images/",
 
             "dataProvider": [{
-                "lineColor": "#b7e021",  
+                "lineColor": "#b7e021",
                 "date": "2012-01-01",
                 "duration": 408
             }, {
@@ -509,7 +509,7 @@ var ChartsAmcharts = function() {
             "startDuration": 2,
 
             "fontFamily": 'Open Sans',
-            
+
             "color":    '#888',
 
             "dataProvider": [{
@@ -643,7 +643,7 @@ var ChartsAmcharts = function() {
             "theme": "light",
 
             "fontFamily": 'Open Sans',
-            
+
             "color":    '#888',
 
             "dataProvider": [{
@@ -695,7 +695,7 @@ var ChartsAmcharts = function() {
             "theme": "light",
 
             "fontFamily": 'Open Sans',
-            
+
             "color":    '#888',
 
             "dataProvider": [{
@@ -756,7 +756,7 @@ var ChartsAmcharts = function() {
             "theme": "light",
 
             "fontFamily": 'Open Sans',
-            
+
             "color":    '#888',
 
             "dataProvider": [{
@@ -835,7 +835,7 @@ var ChartsAmcharts = function() {
             "theme": "light",
 
             "fontFamily": 'Open Sans',
-            
+
             "color":    '#888',
 
             "dataProvider": [{
@@ -886,11 +886,11 @@ var ChartsAmcharts = function() {
 
     var initChartSample10 = function() {
         /*
-            although ammap has methos like getAreaCenterLatitude and getAreaCenterLongitude,
-            they are not suitable in quite a lot of cases as the center of some countries
-            is even outside the country itself (like US, because of Alaska and Hawaii)
-            That's why wehave the coordinates stored here
-        */
+         although ammap has methos like getAreaCenterLatitude and getAreaCenterLongitude,
+         they are not suitable in quite a lot of cases as the center of some countries
+         is even outside the country itself (like US, because of Alaska and Hawaii)
+         That's why wehave the coordinates stored here
+         */
 
         var latlong = {};
         latlong["AD"] = {
@@ -2726,10 +2726,10 @@ var ChartsAmcharts = function() {
             map = new AmCharts.AmMap();
             map.pathToImages = App.getGlobalPluginsPath() + "amcharts/ammap/images/",
 
-            map.fontFamily = 'Open Sans';
+                map.fontFamily = 'Open Sans';
             map.fontSize = '13';
             map.color = '#888';
-            
+
             map.addTitle("Population of the World in 2011", 14);
             map.addTitle("source: Gapminder", 11);
             map.areasSettings = {
@@ -2788,82 +2788,82 @@ var ChartsAmcharts = function() {
             pathToImages: App.getGlobalPluginsPath() + "amcharts/ammap/images/",
 
             "fontFamily": 'Open Sans',
-            
+
             "color":    '#888',
-            
+
             dataProvider: {
                 map: "worldLow",
                 linkToObject: "london",
                 images: [{
-                        id: "london",
-                        color: "#000000",
-                        svgPath: targetSVG,
-                        title: "London",
-                        latitude: 51.5002,
-                        longitude: -0.1262,
-                        scale: 1.5,
-                        zoomLevel: 2.74,
-                        zoomLongitude: -20.1341,
-                        zoomLatitude: 49.1712,
+                    id: "london",
+                    color: "#000000",
+                    svgPath: targetSVG,
+                    title: "London",
+                    latitude: 51.5002,
+                    longitude: -0.1262,
+                    scale: 1.5,
+                    zoomLevel: 2.74,
+                    zoomLongitude: -20.1341,
+                    zoomLatitude: 49.1712,
 
-                        lines: [{
-                            latitudes: [51.5002, 50.4422],
-                            longitudes: [-0.1262, 30.5367]
-                        }, {
-                            latitudes: [51.5002, 46.9480],
-                            longitudes: [-0.1262, 7.4481]
-                        }, {
-                            latitudes: [51.5002, 59.3328],
-                            longitudes: [-0.1262, 18.0645]
-                        }, {
-                            latitudes: [51.5002, 40.4167],
-                            longitudes: [-0.1262, -3.7033]
-                        }, {
-                            latitudes: [51.5002, 46.0514],
-                            longitudes: [-0.1262, 14.5060]
-                        }, {
-                            latitudes: [51.5002, 48.2116],
-                            longitudes: [-0.1262, 17.1547]
-                        }, {
-                            latitudes: [51.5002, 44.8048],
-                            longitudes: [-0.1262, 20.4781]
-                        }, {
-                            latitudes: [51.5002, 55.7558],
-                            longitudes: [-0.1262, 37.6176]
-                        }, {
-                            latitudes: [51.5002, 38.7072],
-                            longitudes: [-0.1262, -9.1355]
-                        }, {
-                            latitudes: [51.5002, 54.6896],
-                            longitudes: [-0.1262, 25.2799]
-                        }, {
-                            latitudes: [51.5002, 64.1353],
-                            longitudes: [-0.1262, -21.8952]
-                        }, {
-                            latitudes: [51.5002, 40.4300],
-                            longitudes: [-0.1262, -74.0000]
-                        }],
+                    lines: [{
+                        latitudes: [51.5002, 50.4422],
+                        longitudes: [-0.1262, 30.5367]
+                    }, {
+                        latitudes: [51.5002, 46.9480],
+                        longitudes: [-0.1262, 7.4481]
+                    }, {
+                        latitudes: [51.5002, 59.3328],
+                        longitudes: [-0.1262, 18.0645]
+                    }, {
+                        latitudes: [51.5002, 40.4167],
+                        longitudes: [-0.1262, -3.7033]
+                    }, {
+                        latitudes: [51.5002, 46.0514],
+                        longitudes: [-0.1262, 14.5060]
+                    }, {
+                        latitudes: [51.5002, 48.2116],
+                        longitudes: [-0.1262, 17.1547]
+                    }, {
+                        latitudes: [51.5002, 44.8048],
+                        longitudes: [-0.1262, 20.4781]
+                    }, {
+                        latitudes: [51.5002, 55.7558],
+                        longitudes: [-0.1262, 37.6176]
+                    }, {
+                        latitudes: [51.5002, 38.7072],
+                        longitudes: [-0.1262, -9.1355]
+                    }, {
+                        latitudes: [51.5002, 54.6896],
+                        longitudes: [-0.1262, 25.2799]
+                    }, {
+                        latitudes: [51.5002, 64.1353],
+                        longitudes: [-0.1262, -21.8952]
+                    }, {
+                        latitudes: [51.5002, 40.4300],
+                        longitudes: [-0.1262, -74.0000]
+                    }],
 
-                        images: [{
-                            label: "Flights from London",
-                            svgPath: planeSVG,
-                            left: 100,
-                            top: 45,
-                            labelShiftY: 5,
-                            color: "#CC0000",
-                            labelColor: "#CC0000",
-                            labelRollOverColor: "#CC0000",
-                            labelFontSize: 20
-                        }, {
-                            label: "show flights from Vilnius",
-                            left: 106,
-                            top: 70,
-                            labelColor: "#000000",
-                            labelRollOverColor: "#CC0000",
-                            labelFontSize: 11,
-                            linkToObject: "vilnius"
-                        }]
-                    },
+                    images: [{
+                        label: "Flights from London",
+                        svgPath: planeSVG,
+                        left: 100,
+                        top: 45,
+                        labelShiftY: 5,
+                        color: "#CC0000",
+                        labelColor: "#CC0000",
+                        labelRollOverColor: "#CC0000",
+                        labelFontSize: 20
+                    }, {
+                        label: "show flights from Vilnius",
+                        left: 106,
+                        top: 70,
+                        labelColor: "#000000",
+                        labelRollOverColor: "#CC0000",
+                        labelFontSize: 11,
+                        linkToObject: "vilnius"
+                    }]
+                },
 
                     {
                         id: "vilnius",
@@ -3047,19 +3047,6 @@ var ChartsAmcharts = function() {
 
     var initChartSample12 = function() {
         var chartData = [];
-        var month = new Array();
-        month[0] = "January";
-        month[1] = "February";
-        month[2] = "March";
-        month[3] = "April";
-        month[4] = "May";
-        month[5] = "June";
-        month[6] = "July";
-        month[7] = "August";
-        month[8] = "September";
-        month[9] = "October";
-        month[10] = "November";
-        month[11] = "December";
         generateChartData();
 
         function generateChartData() {
@@ -3067,7 +3054,7 @@ var ChartsAmcharts = function() {
             firstDate.setDate(firstDate.getDate() - 500);
             firstDate.setHours(0, 0, 0, 0);
 
-            for (var i = 0; i < 11; i++) {
+            for (var i = 0; i < 500; i++) {
                 var newDate = new Date(firstDate);
                 newDate.setDate(newDate.getDate() + i);
 
@@ -3075,7 +3062,7 @@ var ChartsAmcharts = function() {
                 var b = Math.round(Math.random() * 100000000);
 
                 chartData.push({
-                    date: month[i],
+                    date: newDate,
                     value: a,
                     volume: b
                 });
@@ -3085,9 +3072,9 @@ var ChartsAmcharts = function() {
         var chart = AmCharts.makeChart("chart_12", {
             type: "stock",
             "theme": "light",
-            //pathToImages: App.getGlobalPluginsPath() + "amcharts/amcharts/images/",
+            pathToImages: App.getGlobalPluginsPath() + "amcharts/amcharts/images/",
             "fontFamily": 'Open Sans',
-            
+
             "color":    '#888',
             dataSets: [{
                 color: "#b0de09",
@@ -3238,7 +3225,7 @@ var ChartsAmcharts = function() {
         });
     }
 
-    return {
+    module.exports={
         //main function to initiate the module
 
         init: function() {
@@ -3260,7 +3247,3 @@ var ChartsAmcharts = function() {
     };
 
 }();
-
-jQuery(document).ready(function() {    
-   ChartsAmcharts.init(); 
-});

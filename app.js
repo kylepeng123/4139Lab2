@@ -251,8 +251,25 @@ function getEmp() {
                                     var d = new Date(data[i].Date_PK);
                                     //var dayOfMonth =d.getDate()
                                     //console.log(d+"this is d")
+                                    var month;
+                                    if(d.getMonth()<9) {
+                                        month = "0" + (d.getMonth() + 1)
+                                        console.log(month+"this is month")
+                                    }
+                                    else{
+                                        month=(d.getMonth()+1)
+                                    }
+                                    var day;
+                                    console.log(d.getDate()+"this is date")
+                                    if(d.getDate()<10) {
+                                        day = "0" + (d.getDate())
+                                        console.log(day+"this is day")
+                                    }
+                                    else{
+                                        day=(d.getDate())
+                                    }
 
-                                    var n=d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()
+                                    var n=d.getFullYear()+"-"+month+"-"+day
                                     console.log(d+"this is d")
                                     console.log(n+"this is n")
                                     // console.log(d.getMonth()+"this is month")
