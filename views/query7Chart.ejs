@@ -96,9 +96,9 @@ License: You must have a valid license purchased only from themeforest(the above
         color = JSON.parse(htmlDecode("<%= JSON.stringify(colors) %>"));
         var stringForall=[];
         var j = 0;
-        console.log(country)
-        console.log(price0)
-        console.log(price0)
+        console.log(product)
+       // console.log(price0)
+        //console.log(price0)
         for (; j < country.length; j++) {
 
             var obj1;
@@ -115,17 +115,17 @@ License: You must have a valid license purchased only from themeforest(the above
             "dataProvider": stringForall,
             "valueAxes": [{
                 "position": "left",
-                "title": "Visitors"
+                "title": "price"
             }],
             "graphs": [{
-                "balloonText": "[[category]]: <b>[[value]]</b>",
+                "balloonText": product[0]+": <b>[[value]]</b>",
                 "fillColorsField": "color",
                 "fillAlphas": 1,
                 "lineAlpha": 0.1,
                 "type": "column",
                 "valueField": "price0"
             },{
-                "balloonText": "[[category]]: <b>[[value]]</b>",
+                "balloonText": product[1]+": <b>[[value]]</b>",
                 "fillColorsField": "color",
                 "fillAlphas": 1,
                 "lineAlpha": 0.1,
@@ -1134,7 +1134,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <div class="caption">
                                         <i class="icon-bar-chart font-green-haze"></i>
                                         <span class="caption-subject bold uppercase font-green-haze"> Bar Charts</span>
-                                        <span class="caption-helper">column and line mix</span>
+                                        <span class="caption-helper">Compare the prices of two complementary products within a specific country</span>
                                     </div>
                                     <div class="tools">
                                         <a href="javascript:;" class="collapse"> </a>
@@ -1163,7 +1163,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <div class="caption">
                                 <i class="icon-bar-chart font-green-haze"></i>
                                 <span class="caption-subject bold uppercase font-green-haze"> Map Chart</span>
-                                <span class="caption-helper"></span>
+                                <span class="caption-helper">Compare the prices of two complementary products for a specific city</span>
                             </div>
                             <div class="tools">
                                 <a href="javascript:;" class="collapse"> </a>

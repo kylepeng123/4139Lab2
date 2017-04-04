@@ -124,7 +124,7 @@ License: You must have a valid license purchased only from themeforest(the above
             }],
             "startDuration": 1.5,
             "graphs": [{
-                "balloonText": "x:<b>[[x]]</b> y:<b>[[y]]</b><br>value:<b>[[value]]</b>",
+                "balloonText": "price:<b>[[x]]</b> income:<b>[[y]]</b><br>country:<b>[[country]]</b>",
                 "bullet": "bubble",
                 "lineAlpha": 0,
                 "valueField": "country",
@@ -157,13 +157,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 "enabled": true
             }
         });
-        chart.addListener("rendered", zoomChart);
 
-        zoomChart();
-
-        function zoomChart() {
-            chart.zoomToIndexes(chart.dataProvider.length - 40, chart.dataProvider.length - 1);
-        }
 
             //console.log(string3)
 
@@ -811,7 +805,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <div class="caption">
                                         <i class="icon-bar-chart font-green-haze"></i>
                                         <span class="caption-subject bold uppercase font-green-haze">XY charts</span>
-                                        <span class="caption-helper"></span>
+                                        <span class="caption-helper">The prices of a specific product and average income of a country</span>
                                     </div>
                                     <div class="tools">
                                         <a href="javascript:;" class="collapse"> </a>

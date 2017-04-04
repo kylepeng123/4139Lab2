@@ -126,6 +126,7 @@ router.post('/createQuery1', function(req, res, next) {
                     productName: productName,
                     country: country,
                     price: price,
+                    dateofMonth:dateofMonth,
                     chart3Price:chart3Price,
                     chart2Price: chart2Price,
                     colors: colors
@@ -749,10 +750,10 @@ router.post('/createQuery6', function(req, res, next) {
           for(;i<data.length;i++)
           {
             income[i]=data[i].Average_Income;
-            country[i]=data[i].Country;
+            country[i]=data[i].country;
             price0[i]=data[i].Price;
           }
-          //console.log(price[10]);
+          console.log(country);
 
 
               res.render('query6Chart', {

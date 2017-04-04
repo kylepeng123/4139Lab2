@@ -363,14 +363,14 @@ License: You must have a valid license purchased only from themeforest(the above
             "labelText": "[[title]]: [[value]]",
             "pullOutOnlyOne": true,
             "titles": [{
-                "text": "Departments"
+                "text": "Categorys"
             }],
             "allLabels": []
         });
 
         // initialize step array
         chart.drillLevels = [{
-            "title": "Departments",
+            "title": "Categorys",
             "data": chartData
         }];
 
@@ -390,19 +390,19 @@ License: You must have a valid license purchased only from themeforest(the above
                 chart.dataProvider = event.dataItem.dataContext.data;
 
                 // replace title
-                chart.titles[0].text = event.dataItem.dataContext.title;
+                chart.titles[0].text = "drilled_down_on_products";
 
                 // add back link
                 // let's add a label to go back to yearly data
                 event.chart.addLabel(
                     0, 25,
                     "< Go back",
-                    undefined,
-                    undefined,
-                    undefined,
-                    undefined,
-                    undefined,
-                    undefined,
+                    "drilled_down_on_products",
+                    "drilled_down_on_products",
+                    "drilled_down_on_products",
+                    "drilled_down_on_products",
+                    "drilled_down_on_products",
+                    "drilled_down_on_products",
                     'javascript:drillUp();');
 
                 // take in data and animate
@@ -1074,7 +1074,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <div class="caption">
                                         <i class="icon-bar-chart font-green-haze"></i>
                                         <span class="caption-subject bold uppercase font-green-haze"> Bar Charts</span>
-                                        <span class="caption-helper">column and line mix</span>
+                                        <span class="caption-helper">The prices of categories of products</span>
                                     </div>
                                     <div class="tools">
                                         <a href="javascript:;" class="collapse"> </a>
