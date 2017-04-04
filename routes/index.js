@@ -777,6 +777,122 @@ router.post('/createQuery6', function(req, res, next) {
   })
   //res.render('indexv2', { title: 'Express' });
 });
+router.get('/createQuery3', function(req, res, next) {
+
+
+    //var productQ1=req.body.productNameQ1
+    var month = new Array();
+    month[0] = "January";
+    month[1] = "February";
+    month[2] = "March";
+    month[3] = "April";
+    month[4] = "May";
+    month[5] = "June";
+    month[6] = "July";
+    month[7] = "August";
+    month[8] = "September";
+    month[9] = "October";
+    month[10] = "November";
+    month[11] = "December";
+    // var dateMonth = req.body.dateMonth.split("-");
+    // var dateofMonth=dateMonth[2]+"-"+dateMonth[1]+"-"+dateMonth[0];
+    //
+    // var res1=dateMonth[1].replace("0","");
+    // var res2=parseInt(res1)-1;
+    //
+    //
+    // var m=month[res2];
+
+    var conn = new sql.Connection(dbConfig);
+    var req = new sql.Request(conn);
+    var result;
+    //dateofMonth is the Date can be matched in database m is the month  countryq1 is the country
+    conn.connect(function (err) {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        else {
+            req.query("select distinct [Category] as Category from [dataScience].[dbo].[ProductDim2] order by [Category]", function (err, result) {
+                if (err) {
+                    console.log(err);
+
+                }
+                else {
+
+                    console.log("I am in data")
+                    var i=0;
+
+                    var category=[];
+
+                    for(;i<result.length;i++)
+                    {
+
+                        category[i]=result[i].Category;
+
+                    }
+                   // console.log(data[0]);
+                    req.query("select distinct [Product Name] as Product_Name from [dataScience].[dbo].[ProductDim2] order by [Product Name]", function (err, result1) {
+                        if (err) {
+                            console.log(err);
+
+                        }
+                        else {
+
+                            console.log("I am in data")
+                            var i = 0;
+
+                            var product = [];
+
+                            for (; i < result1.length; i++) {
+
+                                product[i] = result1[i].Product_Name;
+
+                            }
+
+
+                            req.query("SELECT distinct P.Category, P.[Product Name] as Product_Name, Avg(F.AvgPrice) As Price FROM [dbo].[FactTable2] F, [dbo].[ProductDim2] P WHERE P.Product_SK = F.Product_FSK GROUP BY ROLLUP(P.Category, P.[Product Name]) ORDER BY P.Category;", function (err, data) {
+                                if (err) {
+                                    console.log(err);
+
+                                }
+                                else {
+
+                                    console.log("I am in data")
+                                    var i = 0;
+                                    var productName = [];
+                                    var category1 = [];
+                                    var price0 = [];
+                                    for (; i < data.length; i++) {
+                                        productName[i] = data[i].Product_Name;
+                                        category1[i] = data[i].Category;
+                                        price0[i] = data[i].Price;
+                                    }
+                                    console.log(data[0]);
+
+                                    res.render('query3Chart', {
+                                        category1: category1,
+                                        price0: price0,
+                                        productName: productName,
+                                        category: category,
+                                        product:product,
+
+                                        colors: colors
+                                    });
+
+                                }
+                            })
+
+                        }
+                    })
+
+                }
+            })
+        }
+    })
+    //res.render('indexv2', { title: 'Express' });
+});
+
 
 router.post('/createQuery7', function(req, res, next) {
 
@@ -904,105 +1020,7 @@ router.post('/check', function(req, result, next) {
 
   console.log(email);
 });
-var ChartsAmcharts = function() {
 
-  var initChartSample1 = function() {
-    var chart = AmCharts.makeChart("chart_1", {
-      "type": "serial",
-      "theme": "light",
-      "pathToImages": App.getGlobalPluginsPath() + "amcharts/amcharts/images/",
-      "autoMargins": false,
-      "marginLeft": 30,
-      "marginRight": 8,
-      "marginTop": 10,
-      "marginBottom": 26,
-
-      "fontFamily": 'Open Sans',
-      "color":    '#888',
-
-      "dataProvider": [{
-        "year": 2009,
-        "income": 23.5,
-        "expenses": 18.1
-      }, {
-        "year": 2010,
-        "income": 26.2,
-        "expenses": 22.8
-      }, {
-        "year": 2011,
-        "income": 30.1,
-        "expenses": 23.9
-      }, {
-        "year": 2012,
-        "income": 29.5,
-        "expenses": 25.1
-      }, {
-        "year": 2013,
-        "income": 30.6,
-        "expenses": 27.2,
-        "dashLengthLine": 5
-      }, {
-        "year": 2014,
-        "income": 34.1,
-        "expenses": 29.9,
-        "dashLengthColumn": 5,
-        "alpha": 0.2,
-        "additional": "(projection)"
-      }],
-      "valueAxes": [{
-        "axisAlpha": 0,
-        "position": "left"
-      }],
-      "startDuration": 1,
-      "graphs": [{
-        "alphaField": "alpha",
-        "balloonText": "<span style='font-size:13px;'>[[title]] in [[category]]:<b>[[value]]</b> [[additional]]</span>",
-        "dashLengthField": "dashLengthColumn",
-        "fillAlphas": 1,
-        "title": "Income",
-        "type": "column",
-        "valueField": "income"
-      }, {
-        "balloonText": "<span style='font-size:13px;'>[[title]] in [[category]]:<b>[[value]]</b> [[additional]]</span>",
-        "bullet": "round",
-        "dashLengthField": "dashLengthLine",
-        "lineThickness": 3,
-        "bulletSize": 7,
-        "bulletBorderAlpha": 1,
-        "bulletColor": "#FFFFFF",
-        "useLineColorForBulletBorder": true,
-        "bulletBorderThickness": 3,
-        "fillAlphas": 0,
-        "lineAlpha": 1,
-        "title": "Expenses",
-        "valueField": "expenses"
-      }],
-      "categoryField": "year",
-      "categoryAxis": {
-        "gridPosition": "start",
-        "axisAlpha": 0,
-        "tickLength": 0
-      }
-    });
-
-    $('#chart_1').closest('.portlet').find('.fullscreen').click(function() {
-      chart.invalidateSize();
-    });
-  }
-
-
-  return {
-    //main function to initiate the module
-
-    init: function() {
-
-      initChartSample1();
-
-    }
-
-  };
-
-}();
 router.post('/get_Date', function(req, res, next) {
   console.log("This is in get Date")
   ChartsAmcharts.init();
